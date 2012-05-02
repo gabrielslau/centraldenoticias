@@ -2,6 +2,7 @@ tmp/*
 Config/database.php
 app/tmp/*
 app/Config/database.php
+app/Config/core.php
 app/Test/*
 app/webroot/index.php
 app/webroot/files/*
