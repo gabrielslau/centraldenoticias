@@ -9,7 +9,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('*');
+	    $this->Auth->allow('admin_login','admin_logout');
 	}
 
 	public function admin_login() {

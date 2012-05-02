@@ -48,5 +48,9 @@ class AppController extends Controller {
 		$this->Auth->loginAction    = array('controller' => 'users', 'action' => 'login', 'admin'=>true);
 		$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login', 'admin'=>true);
 		$this->Auth->loginRedirect  = array('controller' => 'noticias', 'action' => 'add', 'admin'=>true);
+
+		/*if ($this->Session->read('Auth.User')) {
+			echo AuthComponent::user('nome');
+	    }*/
     }
 }
