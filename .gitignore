@@ -1,5 +1,3 @@
-tmp/*
-Config/database.php
 app/tmp/*
 app/Config/database.php
 app/Config/core.php
