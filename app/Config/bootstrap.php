@@ -123,6 +123,9 @@ function array_to_utf8($array = array(), $decode = false) {
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+CakePlugin::load('CakePtbr');
+require CakePlugin::path('CakePtbr') . DS . 'Config' . DS . 'traducao_core.php';
+
 CakePlugin::load('AclExtras');
 CakePlugin::load('Acl', array('bootstrap' => true));
 CakePlugin::load('HabtmCounterCache');
