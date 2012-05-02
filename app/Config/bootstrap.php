@@ -131,3 +131,4 @@ Cache::config('default', array('engine' => 'File'));
  */
 CakePlugin::load('AclExtras');
 CakePlugin::load('Acl', array('bootstrap' => true));
+CakePlugin::load('HabtmCounterCache');

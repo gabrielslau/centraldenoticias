@@ -6,6 +6,8 @@ App::uses('AppModel', 'Model');
  * @property Noticia $Noticia
  */
 class Categoria extends AppModel {
+
+	public $actsAs = array('HabtmCounterCache.HabtmCounterCache');
 /**
  * Validation rules
  *
@@ -38,6 +40,7 @@ class Categoria extends AppModel {
 			'foreignKey' => 'categoria_id',
 			'associationForeignKey' => 'noticia_id',
 			'unique' => 'keepExisting',
+			'counterCache' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

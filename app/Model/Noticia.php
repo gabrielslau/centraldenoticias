@@ -10,6 +10,8 @@ App::uses('AppModel', 'Model');
  * @property Tag $Tag
  */
 class Noticia extends AppModel {
+
+	public $actsAs = array('HabtmCounterCache.HabtmCounterCache');
 /**
  * Validation rules
  *
@@ -109,6 +111,7 @@ class Noticia extends AppModel {
 			'foreignKey' => 'noticia_id',
 			'associationForeignKey' => 'categoria_id',
 			'unique' => 'keepExisting',
+			'counterCache' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -124,6 +127,7 @@ class Noticia extends AppModel {
 			'foreignKey' => 'noticia_id',
 			'associationForeignKey' => 'subscriber_id',
 			'unique' => 'keepExisting',
+			'counterCache' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -139,6 +143,7 @@ class Noticia extends AppModel {
 			'foreignKey' => 'noticia_id',
 			'associationForeignKey' => 'tag_id',
 			'unique' => 'keepExisting',
+			'counterCache' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
