@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('AuthComponent', 'Controller/Component');
 /**
  * User Model
  *
@@ -7,6 +8,40 @@ App::uses('AppModel', 'Model');
  * @property Noticia $Noticia
  */
 class User extends AppModel {
+
+	public $actsAs = array('Acl' => array('type' => 'requester'));
+
+/**
+ * CALLBACKS
+ */
+	public function beforeSave() {
+        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        return true;
+    }
+
+    public function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        if (isset($this->data['User']['group_id'])) {
+            $groupId = $this->data['User']['group_id'];
+        } else {
+            $groupId = $this->field('group_id');
+        }
+        if (!$groupId) {
+            return null;
+        } else {
+            return array('Group' => array('id' => $groupId));
+        }
+    }
+
+    /*
+    // Group-only ACL -- Permições somente POR GRUPO
+    public function bindNode($user) {
+	    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
+	}*/
+
+	
 /**
  * Validation rules
  *
@@ -43,7 +78,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'login' => array(
+		'username' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -53,7 +88,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'senha' => array(
+		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -64,6 +99,8 @@ class User extends AppModel {
 			),
 		),
 	);
+
+
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

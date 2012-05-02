@@ -6,8 +6,8 @@
 			<th><?php echo $this->Paginator->sort('group_id');?></th>
 			<th><?php echo $this->Paginator->sort('nome');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
-			<th><?php echo $this->Paginator->sort('login');?></th>
-			<th><?php echo $this->Paginator->sort('senha');?></th>
+			<th><?php echo $this->Paginator->sort('username');?></th>
+			<th><?php echo $this->Paginator->sort('password');?></th>
 			<th><?php echo $this->Paginator->sort('status');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -21,8 +21,8 @@
 		</td>
 		<td><?php echo h($user['User']['nome']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['login']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['senha']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['status']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 		<td class="actions">

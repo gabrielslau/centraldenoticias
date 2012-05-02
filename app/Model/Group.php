@@ -6,6 +6,17 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Group extends AppModel {
+
+	public $actsAs = array('Acl' => array('type' => 'requester'));
+
+/**
+ * CALLBACKS
+ */
+    public function parentNode() {
+        return null;
+    }
+
+    
 /**
  * Validation rules
  *

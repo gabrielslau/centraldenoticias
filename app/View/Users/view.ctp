@@ -21,14 +21,14 @@
 			<?php echo h($user['User']['email']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Login'); ?></dt>
+		<dt><?php echo __('Username'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['login']); ?>
+			<?php echo h($user['User']['username']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Senha'); ?></dt>
+		<dt><?php echo __('Password'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['senha']); ?>
+			<?php echo h($user['User']['password']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Status'); ?></dt>
