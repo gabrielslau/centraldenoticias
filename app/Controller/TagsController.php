@@ -47,7 +47,7 @@ class TagsController extends AppController {
 				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
 			}
 		}
-		$noticias = $this->Tag->Noticium->find('list');
+		$noticias = $this->Tag->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 
@@ -72,7 +72,7 @@ class TagsController extends AppController {
 		} else {
 			$this->request->data = $this->Tag->read(null, $id);
 		}
-		$noticias = $this->Tag->Noticium->find('list');
+		$noticias = $this->Tag->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 

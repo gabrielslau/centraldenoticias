@@ -12,7 +12,6 @@
 		echo $this->Form->input('fonte');
 		echo $this->Form->input('destaque');
 		echo $this->Form->input('status');
-		echo $this->Form->input('noticia_categoria_count');
 		echo $this->Form->input('Categoria');
 		echo $this->Form->input('Subscriber');
 		echo $this->Form->input('Tag');

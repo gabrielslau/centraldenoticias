@@ -61,11 +61,6 @@
 			<?php echo h($noticia['Noticia']['modified']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Noticia Categoria Count'); ?></dt>
-		<dd>
-			<?php echo h($noticia['Noticia']['noticia_categoria_count']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

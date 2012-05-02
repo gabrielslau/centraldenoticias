@@ -47,7 +47,7 @@ class AnexosController extends AppController {
 				$this->Session->setFlash(__('The anexo could not be saved. Please, try again.'));
 			}
 		}
-		$noticias = $this->Anexo->Noticium->find('list');
+		$noticias = $this->Anexo->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 
@@ -72,7 +72,7 @@ class AnexosController extends AppController {
 		} else {
 			$this->request->data = $this->Anexo->read(null, $id);
 		}
-		$noticias = $this->Anexo->Noticium->find('list');
+		$noticias = $this->Anexo->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 

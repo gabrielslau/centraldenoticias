@@ -47,7 +47,7 @@ class SubscribersController extends AppController {
 				$this->Session->setFlash(__('The subscriber could not be saved. Please, try again.'));
 			}
 		}
-		$noticias = $this->Subscriber->Noticium->find('list');
+		$noticias = $this->Subscriber->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 
@@ -72,7 +72,7 @@ class SubscribersController extends AppController {
 		} else {
 			$this->request->data = $this->Subscriber->read(null, $id);
 		}
-		$noticias = $this->Subscriber->Noticium->find('list');
+		$noticias = $this->Subscriber->Noticia->find('list');
 		$this->set(compact('noticias'));
 	}
 

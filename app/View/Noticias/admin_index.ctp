@@ -14,7 +14,6 @@
 			<th><?php echo $this->Paginator->sort('status');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('noticia_categoria_count');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -34,7 +33,6 @@
 		<td><?php echo h($noticia['Noticia']['status']); ?>&nbsp;</td>
 		<td><?php echo h($noticia['Noticia']['created']); ?>&nbsp;</td>
 		<td><?php echo h($noticia['Noticia']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($noticia['Noticia']['noticia_categoria_count']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $noticia['Noticia']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $noticia['Noticia']['id'])); ?>

@@ -47,6 +47,15 @@ class NoticiasController extends AppController {
 				$this->Session->setFlash(__('The noticia could not be saved. Please, try again.'));
 			}
 		}
+
+		/*$str = "Algarve";
+		die( $str.' '. AuthComponent::password($str.time()) );*/
+
+		$users = $this->Noticia->User->find('list');
+		$categorias = $this->Noticia->Categoria->find('list');
+		$tags = $this->Noticia->Tag->find('list');
+		$subscribers = $this->Noticia->Subscriber->find('list');
+		$this->set(compact('users','categorias','tags','subscribers'));
 	}
 
 /**
@@ -70,6 +79,12 @@ class NoticiasController extends AppController {
 		} else {
 			$this->request->data = $this->Noticia->read(null, $id);
 		}
+
+		$users = $this->Noticia->User->find('list');
+		$categorias = $this->Noticia->Categoria->find('list');
+		$tags = $this->Noticia->Tag->find('list');
+		$subscribers = $this->Noticia->Subscriber->find('list');
+		$this->set(compact('users','categorias','tags','subscribers'));
 	}
 
 /**
