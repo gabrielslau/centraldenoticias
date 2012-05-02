@@ -1,0 +1,32 @@
+// Mixins.less
+// Snippets of reusable CSS to develop faster and keep code readable
+// -----------------------------------------------------------------
+
+
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// New image replacement
+// -------------------------
+// Source: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+.hide-text {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}

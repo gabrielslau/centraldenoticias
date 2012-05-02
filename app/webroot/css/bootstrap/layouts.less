@@ -1,0 +1,19 @@
+//
+// Layouts
+// Fixed-width and fluid (with sidebar) layouts
+// --------------------------------------------
+@import url("variables.less");
+@import url("mixins.less");
+@import url("utility-mixins.less");
+
+// Container (centered, fixed-width layouts)
+.container {
+  .container-fixed();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  padding-left: @gridGutterWidth;
+  padding-right: @gridGutterWidth;
+  .clearfix();
+}

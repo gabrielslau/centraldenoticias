@@ -1,0 +1,140 @@
+/*
+  960 Grid System ~ Text CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+body {
+  font: 13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+pre,
+code {
+  font-family: 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+}
+
+hr {
+  border: 0 #ccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+h5 {
+  font-size: 17px;
+}
+
+h6 {
+  font-size: 15px;
+}
+
+/* `Spacing
+----------------------------------------------------------------------------------------------------*/
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  margin-left: 30px;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset,
+figure {
+  margin-bottom: 20px;
+}
+
+
+
+/*
+** Highlights
+*/
+.hg-yellow{
+  background:#FFF9DB;
+  border:1px solid #F3D97F;
+  border-radius:3px;
+  padding:2px 4px;
+  text-shadow: 0px 1px #fff;
+  display:inline-block;
+}
+
+.hg-red{
+  background:#F2DECD;
+  border:1px solid #E9C8AE;
+  border-radius:3px;
+  padding:2px 4px;
+  text-shadow: 0px 1px #fff;
+  display:inline-block;
+}
+
+.hg-blue{
+  background:#CDDFF2;
+  border:1px solid #AECDE9;
+  border-radius:3px;
+  padding:2px 4px;
+  display:inline-block;
+  text-shadow: 0px 1px #fff;}
+
+.hg-green{
+  background:#E1F2CD;
+  border:1px solid #CFE9AE;
+  border-radius:3px;
+  display:inline-block;
+  padding:2px 4px;}
+
+.hg-purple{
+  background:#E4CDF2;
+  border:1px solid #D4AEE9;
+  border-radius:3px;
+  padding:2px 4px;
+  display:inline-block;
+  text-shadow: 0px 1px #fff;}
+
+.hg-gray{
+  background:#EAEAEA;
+  border:1px solid #C6C6C6;
+  border-radius:3px;
+  text-shadow: 0px 1px #fff;
+  display:inline-block;
+  padding:2px 4px;}
