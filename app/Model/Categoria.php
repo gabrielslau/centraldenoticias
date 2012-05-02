@@ -8,6 +8,23 @@ App::uses('AppModel', 'Model');
 class Categoria extends AppModel {
 
 	public $actsAs = array('HabtmCounterCache.HabtmCounterCache');
+
+/**
+ * Callbacks
+ *
+ * @var array
+ */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
+	function beforeSave() {
+		if (!empty($this->data)){
+			$this->data['Categoria'] = array_to_utf8($this->data['Categoria'],true);
+		}
+		return true;
+	}
+
 /**
  * Validation rules
  *

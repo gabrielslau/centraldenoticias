@@ -16,6 +16,22 @@ class Group extends AppModel {
         return null;
     }
 
+/**
+ * CALLBACKS
+ *
+ * @var array
+ */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
+	function beforeSave() {
+		if (!empty($this->data)){
+			$this->data['Group'] = array_to_utf8($this->data['Group'],true);
+		}
+		return true;
+	}    
+
     
 /**
  * Validation rules

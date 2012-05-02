@@ -12,6 +12,25 @@ App::uses('AppModel', 'Model');
 class Noticia extends AppModel {
 
 	public $actsAs = array('HabtmCounterCache.HabtmCounterCache');
+
+
+/**
+ * CALLBACKS
+ *
+ * @var array
+ */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
+	function beforeSave() {
+		if (!empty($this->data)){
+			$this->data['Noticia'] = array_to_utf8($this->data['Noticia'],true);
+		}
+		return true;
+	} 
+
+
 /**
  * Validation rules
  *

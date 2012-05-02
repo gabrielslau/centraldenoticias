@@ -6,6 +6,23 @@ App::uses('AppModel', 'Model');
  * @property Noticia $Noticia
  */
 class Subscriber extends AppModel {
+
+/**
+ * CALLBACKS
+ *
+ * @var array
+ */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
+	function beforeSave() {
+		if (!empty($this->data)){
+			$this->data['Subscriber'] = array_to_utf8($this->data['Subscriber'],true);
+		}
+		return true;
+	} 
+
 /**
  * Validation rules
  *

@@ -6,6 +6,23 @@ App::uses('AppModel', 'Model');
  * @property Noticia $Noticia
  */
 class Anexo extends AppModel {
+
+/**
+ * CALLBACKS
+ *
+ * @var array
+ */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
+	function beforeSave() {
+		if (!empty($this->data)){
+			$this->data['Anexo'] = array_to_utf8($this->data['Anexo'],true);
+		}
+		return true;
+	}
+
 /**
  * Validation rules
  *

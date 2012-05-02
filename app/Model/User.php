@@ -13,9 +13,20 @@ class User extends AppModel {
 
 /**
  * CALLBACKS
+ *
+ * @var array
  */
+	function afterFind($results) {
+		return array_to_utf8($results);
+	}
+
 	public function beforeSave() {
         $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+
+        if (!empty($this->data)){
+			$this->data['Group'] = array_to_utf8($this->data['Group'],true);
+		}
+
         return true;
     }
 
