@@ -13,7 +13,7 @@ class CategoriasController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Categoria->recursive = 0;
 		$this->set('categorias', $this->paginate());
 	}
@@ -24,7 +24,7 @@ class CategoriasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->Categoria->id = $id;
 		if (!$this->Categoria->exists()) {
 			throw new NotFoundException(__('Invalid categoria'));
@@ -37,7 +37,7 @@ class CategoriasController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
@@ -55,7 +55,7 @@ class CategoriasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Categoria->id = $id;
 		if (!$this->Categoria->exists()) {
 			throw new NotFoundException(__('Invalid categoria'));
@@ -78,7 +78,7 @@ class CategoriasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

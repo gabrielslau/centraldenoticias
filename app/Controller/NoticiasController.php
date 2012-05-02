@@ -13,7 +13,7 @@ class NoticiasController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Noticia->recursive = 0;
 		$this->set('noticias', $this->paginate());
 	}
@@ -37,7 +37,7 @@ class NoticiasController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Noticia->create();
 			if ($this->Noticia->save($this->request->data)) {
@@ -55,7 +55,7 @@ class NoticiasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Noticia->id = $id;
 		if (!$this->Noticia->exists()) {
 			throw new NotFoundException(__('Invalid noticia'));
@@ -78,7 +78,7 @@ class NoticiasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

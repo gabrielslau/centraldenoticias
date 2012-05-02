@@ -13,7 +13,7 @@ class AnexosController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Anexo->recursive = 0;
 		$this->set('anexos', $this->paginate());
 	}
@@ -24,7 +24,7 @@ class AnexosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->Anexo->id = $id;
 		if (!$this->Anexo->exists()) {
 			throw new NotFoundException(__('Invalid anexo'));
@@ -37,7 +37,7 @@ class AnexosController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Anexo->create();
 			if ($this->Anexo->save($this->request->data)) {
@@ -57,7 +57,7 @@ class AnexosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Anexo->id = $id;
 		if (!$this->Anexo->exists()) {
 			throw new NotFoundException(__('Invalid anexo'));
@@ -82,7 +82,7 @@ class AnexosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

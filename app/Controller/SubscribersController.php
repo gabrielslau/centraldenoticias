@@ -13,7 +13,7 @@ class SubscribersController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->Subscriber->recursive = 0;
 		$this->set('subscribers', $this->paginate());
 	}
@@ -24,7 +24,7 @@ class SubscribersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->Subscriber->id = $id;
 		if (!$this->Subscriber->exists()) {
 			throw new NotFoundException(__('Invalid subscriber'));
@@ -37,7 +37,7 @@ class SubscribersController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Subscriber->create();
 			if ($this->Subscriber->save($this->request->data)) {
@@ -57,7 +57,7 @@ class SubscribersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->Subscriber->id = $id;
 		if (!$this->Subscriber->exists()) {
 			throw new NotFoundException(__('Invalid subscriber'));
@@ -82,7 +82,7 @@ class SubscribersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

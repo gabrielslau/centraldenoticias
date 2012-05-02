@@ -12,7 +12,16 @@ class UsersController extends AppController {
 	    $this->Auth->allow('*');
 	}
 
-	public function login() {
+	public function admin_login() {
+		// Redireciona se já estiver logado
+		if ($this->Session->read('Auth.User')) {
+
+			echo AuthComponent::user('nome');
+
+	        // $this->Session->setFlash('You are logged in!');
+	        // $this->redirect('/', null, false);
+	    }
+
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
 	            $this->redirect($this->Auth->redirect());
@@ -22,8 +31,10 @@ class UsersController extends AppController {
 	    }
 	}
 
-	public function logout() {
+	public function admin_logout() {
 	    //Leave empty for now.
+	    $this->Session->setFlash('Good-Bye');
+		$this->redirect($this->Auth->logout());
 	}
 
 
@@ -32,7 +43,7 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
@@ -43,7 +54,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -56,7 +67,7 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
@@ -76,7 +87,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -101,7 +112,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
