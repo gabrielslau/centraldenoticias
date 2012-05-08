@@ -26,9 +26,19 @@ class Noticia extends AppModel {
 	function beforeSave() {
 		if (!empty($this->data)){
 			$this->data['Noticia'] = array_to_utf8($this->data['Noticia'],true);
+
+			$this->data['Noticia']['titulo'] = ucfirst( strtolower($this->data['Noticia']['titulo']) ); // Capitalize
 		}
 		return true;
-	} 
+	}
+
+	// Exclui qualquer arquivo relacionado à notícia, que esteja cadastrado em sua pasta
+	function afterDelete() {
+	    App::uses('Folder', 'Utility');
+		$folder = new Folder('files'.DS.'image'.DS.'noticia'.DS.$this->data['Noticia']['codigo'].DS);
+		$folder->delete();
+	}
+
 
 
 /**
@@ -36,7 +46,7 @@ class Noticia extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
+	public $validateCadastro = array(
 		'user_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
@@ -50,31 +60,77 @@ class Noticia extends AppModel {
 		'codigo' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'O código da notícia não foi especificado',
+				'required' => true,
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 7),
+				'message' => 'O código deve conter menos de 7 caracteres'
+			)
 		),
 		'titulo' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'message' => 'O título da notícia deve ser informado',
+				'required' => true,
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 250),
+				'message' => 'O título deve conter menos de 250 caracteres'
+			)
+		),
+		'resumo' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'O resumo da notícia deve ser informado',
+				'required' => false,
+				'allowEmpty' => true,
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 500),
+				'message' => 'O texto de chamada deve conter menos de 500 caracteres'
+			)
 		),
 		'conteudo' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'message' => 'O conteúdo da notícia deve ser informado',
+				'required' => true,
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'imagem' => array(
+			'maxLength' => array(
+				'rule' => array('maxLength', 60),
+				'message' => 'O nome da imagem deve conter menos de 60 caracteres'
+			)
+		),
+		'fonte' => array(
+			'maxLength' => array(
+				'rule' => array('maxLength', 60),
+				'message' => 'O nome da fonte deve conter menos de 60 caracteres'
+			)
+		),
+		'destaque' => array(
+			'boolean' => array(
+				'rule' => array('boolean'),
+				'message' => 'O valor de destaque precisa ser booleano'
+			),
+		),
+		'status' => array(
+			'boolean' => array(
+				'rule' => array('boolean'),
+				'message' => 'O valor de status precisa ser booleano'
+			),
+		),
+		'created' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
+				'message' => 'O formato da data da notícia não é válida',
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);

@@ -18,7 +18,7 @@
     	<ul>
         	<li class="active">
                 <?php
-                    echo $this->Html->link('Dashboard',array('controller'=>'pages','action'=>'home'),array('class'=>'mws-i-24 i-home'));
+                    echo $this->Html->link('Dashboard',array('controller'=>'pages','action'=>'home','admin'=>false),array('class'=>'mws-i-24 i-home'));
                 ?>
             </li>
 
@@ -26,8 +26,8 @@
                 <?php echo $this->Html->link('Notícias', '#',array('class'=>'mws-i-24 i-create')) ?>
                 <ul>
                     <?php 
-                        echo '<li>'.$this->Html->link('Adicionar nova', array('controller'=>'noticias','action' => 'add'),array('class'=>'mws-i-24 i-pencil')).'</li>';
-                        echo '<li>'.$this->Html->link('Ver todas', array('controller'=>'noticias','action' => 'index'),array('class'=>'mws-i-24 i-list')).'</li>';
+                        echo '<li>'.$this->Html->link('Adicionar nova', array('controller'=>'noticias','action' => 'add', 'admin'=>true),array('class'=>'mws-i-24 i-pencil')).'</li>';
+                        echo '<li>'.$this->Html->link('Ver todas', array('controller'=>'noticias','action' => 'index', 'admin'=>true),array('class'=>'mws-i-24 i-list')).'</li>';
                     ?>
                 </ul>
             </li>
@@ -36,8 +36,8 @@
                 <?php echo $this->Html->link('Categorias', '#',array('class'=>'mws-i-24 i-address-book-4')) ?>
                 <ul class="closed">
                     <?php 
-                        echo '<li>'.$this->Html->link('Adicionar novo', array('controller'=>'categorias','action' => 'add'),array('class'=>'mws-i-24 i-pencil')).'</li>';
-                        echo '<li>'.$this->Html->link('Ver todos', array('controller'=>'categorias','action' => 'index'),array('class'=>'mws-i-24 i-list')).'</li>';
+                        echo '<li>'.$this->Html->link('Adicionar novo', array('controller'=>'categorias','action' => 'add', 'admin'=>true),array('class'=>'mws-i-24 i-pencil')).'</li>';
+                        echo '<li>'.$this->Html->link('Ver todos', array('controller'=>'categorias','action' => 'index', 'admin'=>true),array('class'=>'mws-i-24 i-list')).'</li>';
                     ?>
                 </ul>
             </li>
@@ -46,8 +46,8 @@
                 <?php echo $this->Html->link('Tags', '#',array('class'=>'mws-i-24 i-tag')) ?>
                 <ul class="closed">
                     <?php 
-                        echo html_entity_decode($this->Html->tag('li' ,$this->Html->link('Adicionar novo', array('controller'=>'tags','action' => 'add'),array('class'=>'mws-i-24 i-pencil')) ));
-                        echo '<li>'.$this->Html->link('Ver todos', array('controller'=>'tags','action' => 'index'),array('class'=>'mws-i-24 i-list')).'</li>';
+                        echo html_entity_decode($this->Html->tag('li' ,$this->Html->link('Adicionar novo', array('controller'=>'tags','action' => 'add', 'admin'=>true),array('class'=>'mws-i-24 i-pencil')) ));
+                        echo '<li>'.$this->Html->link('Ver todos', array('controller'=>'tags','action' => 'index', 'admin'=>true),array('class'=>'mws-i-24 i-list')).'</li>';
                     ?>
                 </ul>
             </li>

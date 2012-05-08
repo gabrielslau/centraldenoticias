@@ -27,7 +27,7 @@
 		'admin/icons/24x24',
 		'admin/jui/jquery.ui',
 
-		'admin/mws.theme'  // Theme Stylesheet
+		'admin/mws.theme-blue'  // Theme Stylesheet
 	);
 
 	if(isset($css_for_layout) && !empty($css_for_layout)){

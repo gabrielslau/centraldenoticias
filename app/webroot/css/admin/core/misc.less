@@ -1,4 +1,6 @@
-@import url("../bootstrap.less");
+@import url("../../bootstrap/variables.less");
+@import url("../../bootstrap/mixins.less");
+
 /* Pagination */
 
 .mws-pagination
@@ -24,7 +26,7 @@
 	list-style:none;
 }
 
-.mws-pagination ul li .mws-paging-button
+.mws-pagination ul li .mws-paging-button 
 {
 	text-align:center;
 	padding:3px 9px;
@@ -35,12 +37,7 @@
 	background:#f0f0f0;
 	
 	/* CSS 3 */
-	
-	-webkit-border-radius:4px;
-	-o-border-radius:4px;
-	-moz-border-radius:4px;
-	-khtml-border-radius:4px;
-	border-radius:4px;
+	.border-radius(4px);
 }
 
 .mws-pagination ul li .mws-paging-button.current
@@ -407,7 +404,11 @@ div.mws-panel-toolbar ul li span:active
 .no-mr{margin-right:0!important}
 .no-mb{margin-bottom:0!important}
 .no-ml{margin-left:0!important}
+.no-pr{padding-right:0!important}
+.no-pl{padding-left:0!important}
+.no-pb{padding-bottom:0!important}
+.no-pt{padding-top:0!important}
 .no-box-shadow{.box-shadow(0,0,0,0)}
-.no-border-radius{.rounded-corners(0)}
+.no-border-radius{.border-radius(0)}
 
 .notice{color:#666;font-style:italic;font-size:13px}

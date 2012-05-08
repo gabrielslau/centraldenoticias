@@ -76,7 +76,19 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		// Enable CacheView
+		$this->helpers[] = 'Cache';
+		$this->cacheAction = '1 day';
+
+		$this->loadModel('Noticia');
+
+		$countItens = array();
+		$countItens['Noticia'] = $this->Noticia->find('count',array('cache' => 'NoticiaCount', 'cacheConfig' => 'long'));
+		$countItens['Categoria'] = $this->Noticia->Categoria->find('count',array('cache' => 'CategoriaCount'));
+		$countItens['Tag'] = $this->Noticia->Tag->find('count',array('cache' => 'TagCount'));
+
+		$this->set(compact('page', 'subpage', 'title_for_layout','countItens'));
 		$this->render(implode('/', $path));
 	}
 }

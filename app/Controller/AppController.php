@@ -40,6 +40,7 @@ class AppController extends Controller {
             )
         ),
         'Session'
+        // ,'DebugKit.Toolbar'
     );
     public $helpers = array('Html', 'Form', 'Js', 'Session');
 
@@ -47,10 +48,12 @@ class AppController extends Controller {
         //Configure AuthComponent
 		$this->Auth->loginAction    = array('controller' => 'users', 'action' => 'login', 'admin'=>true);
 		$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login', 'admin'=>true);
-		$this->Auth->loginRedirect  = array('controller' => 'noticias', 'action' => 'add', 'admin'=>true);
+		$this->Auth->loginRedirect  = array('controller' => 'pages', 'action' => 'display', 'admin'=>false, 'home');
 
 		/*if ($this->Session->read('Auth.User')) {
-			echo AuthComponent::user('nome');
+			// echo AuthComponent::user('nome');
+            // $this->AclCaching->forceAllow();
+            $this->Auth->allow('*');
 	    }*/
     }
 }

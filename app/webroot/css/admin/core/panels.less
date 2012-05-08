@@ -1,4 +1,4 @@
-@import url("../bootstrap.less");
+@import url("../../bootstrap/variables.less");
 /* Panel Header */
 
 .mws-panel
@@ -82,12 +82,13 @@
 	border-radius:2px;
 }
 
-.mws-panel.mws-collapsed .mws-panel-header .mws-collapse-button span
+// .mws-panel.mws-collapsed .mws-panel-header .mws-collapse-button span
+.mws-collapsed .mws-panel-header .mws-collapse-button span
 {
-	background-image:url("@{base-url}img/admin/core/mws-panel-button-icon-plus.png");
+	background-image:url("@{base-url}img/admin/core/mws-panel-button-icon-plus.png"); 
 }
 
-.mws-panel .mws-panel-header .mws-collapse-button span
+.mws-panel-header .mws-collapse-button span
 {
 	background-image:url("@{base-url}img/admin/core/mws-panel-button-icon-min.png");
 }

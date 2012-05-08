@@ -48,9 +48,10 @@
 
 
 	<?php
-		$js_for_layout = isset($js_for_layout) ? $js_for_layout : array();
-		$asset_js_for_layout = isset($asset_js_for_layout) ? $asset_js_for_layout : array();
-		$jsExternal_for_layout = isset($jsExternal_for_layout) ? $jsExternal_for_layout : array();
+		$js_for_layout         = isset($js_for_layout) 			? $js_for_layout 		: array();
+		$asset_js_for_layout   = isset($asset_js_for_layout) 	? $asset_js_for_layout 	: array();
+		$jsExternal_for_layout = isset($jsExternal_for_layout) 	? $jsExternal_for_layout: array();
+		
 		echo $this->element('admin/estrutura/scripts',array('js_for_layout'=>$js_for_layout,'jsExternal_for_layout'=>$jsExternal_for_layout,'asset_js_for_layout'=>$asset_js_for_layout));
 	?>
 	<?php echo $this->element('sql_dump'); ?>

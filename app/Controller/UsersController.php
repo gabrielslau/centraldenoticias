@@ -13,17 +13,23 @@ class UsersController extends AppController {
 	}
 
 	public function admin_login() {
+		$this->layout = 'login';
+
 		// Redireciona se já estiver logado
-		if ($this->Session->read('Auth.User')) {
+		/*if ($this->Session->read('Auth.User')) {
 
 			echo AuthComponent::user('nome');
 
 	        // $this->Session->setFlash('You are logged in!');
 	        // $this->redirect('/', null, false);
-	    }
+	    }*/
 
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
+
+	        	// $group = $this->User->Group->find('first',array('conditions'=>array('Group.id'=>AuthComponent::user('group_id'))));
+	        	// if(!empty($group)) $this->Session->write('Auth.Group', $group['Group']);
+
 	            $this->redirect($this->Auth->redirect());
 	        } else {
 	            $this->Session->setFlash('Your username or password was incorrect.');

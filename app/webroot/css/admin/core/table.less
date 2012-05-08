@@ -1,4 +1,6 @@
-@import url("../bootstrap.less");
+@import url("../../bootstrap/variables.less");
+@import url("../../bootstrap/mixins.less");
+
 table.mws-table
 {
 	width:100%;
@@ -57,12 +59,12 @@ table.mws-table
 }*/
 .mws-table tbody tr td a{text-decoration:none;}
 
-.mws-panel-body a{
+/*.mws-panel-body a{
 	color:#9FAA20;
 }
 .mws-table tbody tr:hover td:first-child a{
 	color:#fff;
-}
+}*/
 
 .mws-table tbody tr.odd
 {
@@ -331,4 +333,22 @@ div.dataTables_wrapper .dataTables_paginate span.paginate_active
 	-o-box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.25);
 	-khtml-box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.25);	
 	box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.mws-table {
+	.column-actions{
+		width:150px!important;
+	}
+
+	.column-thumbnail{
+		width:50px!important;
+	}
+	.column-tags{
+		width:200px!important;
+		span{
+			display:inline-block;
+			margin:3px;
+		}
+	}
 }

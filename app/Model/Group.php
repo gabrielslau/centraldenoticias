@@ -28,10 +28,10 @@ class Group extends AppModel {
 	function beforeSave() {
 		if (!empty($this->data)){
 			$this->data['Group'] = array_to_utf8($this->data['Group'],true);
+			$this->data['Tag']['slug'] = strtolower(Inflector::slug($this->data['Tag']['nome']));
 		}
 		return true;
-	}    
-
+	}
     
 /**
  * Validation rules

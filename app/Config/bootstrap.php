@@ -85,6 +85,7 @@
  */
 Cache::config('default', array('engine' => 'File'));
 
+Configure::write('Config.language', 'br');
 define('NAMESITE', 'Central de Notícias' );
 
 /*
@@ -102,6 +103,10 @@ function array_to_utf8($array = array(), $decode = false) {
 	    }
 	}
     return $newarray;
+}
+
+function isEmpty($element){
+	return !empty($element) ? $element : '';
 }
 
 
@@ -129,3 +134,4 @@ require CakePlugin::path('CakePtbr') . DS . 'Config' . DS . 'traducao_core.php';
 CakePlugin::load('AclExtras');
 CakePlugin::load('Acl', array('bootstrap' => true));
 CakePlugin::load('HabtmCounterCache');
+CakePlugin::load('DebugKit');
