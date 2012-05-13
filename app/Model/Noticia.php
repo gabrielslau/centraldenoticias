@@ -29,8 +29,21 @@ class Noticia extends AppModel {
 
 			$this->data['Noticia']['titulo'] = ucfirst( strtolower($this->data['Noticia']['titulo']) ); // Capitalize
 		}
+
 		return true;
 	}
+
+	/*function beforeValidate() {
+		// parent::beforeSave(); 
+		
+		if (!empty($this->data)){
+			$this->data['Noticia'] = array_to_utf8($this->data['Noticia'],true);
+
+			$this->data['Noticia']['titulo'] = ucfirst( strtolower($this->data['Noticia']['titulo']) ); // Capitalize
+		}
+		return true;
+		// return parent::beforeSave(); 
+	}*/
 
 	// Exclui qualquer arquivo relacionado à notícia, que esteja cadastrado em sua pasta
 	function afterDelete() {

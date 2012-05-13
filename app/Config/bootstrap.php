@@ -83,6 +83,8 @@
  *		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
  *	));
  */
+set_time_limit(0);
+ignore_user_abort(true);
 Cache::config('default', array('engine' => 'File'));
 
 Configure::write('Config.language', 'br');

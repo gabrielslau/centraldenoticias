@@ -24,8 +24,130 @@ class NoticiasController extends AppController {
 	public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title_for_layout', 'Notícias');
-        $this->Auth->allow('tempUploadCapa');
+        $this->Auth->allow('tempUploadCapa','copy');
     }
+
+    function copy(){
+		$this->autoRender = false;
+		App::uses('File', 'Utility');
+		App::uses('Folder', 'Utility');
+
+
+		$logfile = new File(str_replace('/', DS, WWW_ROOT.'files/log.txt'));
+		$conditions = array();
+
+		if(!$logfile->exists()){
+            $logfile->create();
+        }
+
+        // if($logfile->exists()){
+            $content = $logfile->read();
+            if( !empty($content) && $content){
+                $content = explode(';', $content);
+                $content = array_filter($content, "isEmpty"); //Limpa os campos vazios do array
+                
+                $conditions = array(
+                	'conditions'=>array(
+	                    'NOT'=>array(
+	                        'Tnoticia.id'=>$content
+	                    )
+                    ),
+                    'limit'=>600
+                );
+            }
+        // }
+
+
+		// $baseDir = "D:/www/temoscasa-new/_uploads/noticias/";
+		$baseDir = '/home/profissionaldobrasi1/public_html/temoscasa-new/_uploads/noticias/';
+
+		$this->loadModel('Tnoticia');
+		$this->Tnoticia->recursive = -1;
+		// $noticias_tc = $this->Tnoticia->find('all',array('limit'=>1,'order'=>'Tnoticia.id DESC'));
+		// die('teste');
+		$noticias_tc = $this->Tnoticia->find('all',$conditions);
+		// print_r($noticias_tc);exit;
+
+		foreach ($noticias_tc as $noticia) {
+			if($noticia['Tnoticia']['excluido'] == '0'):
+				$categoria_id = $noticia['Tnoticia']['categoria_id'] == 0 ? 11 : $noticia['Tnoticia']['categoria_id'];
+				$data = array(
+					'Tnoticia'=>$noticia['Tnoticia'],
+					'Categoria'=>array($categoria_id)
+				);
+
+				$codigo = $this->Noticia->Categoria->find('first',array('fields'=>array('codigo'),'conditions'=>array('Categoria.id'=>$categoria_id),'recursive'=>'-1' ));
+				if(empty($codigo)) {$codigo = $this->Noticia->Categoria->find('first',array('fields'=>array('codigo'),'conditions'=>array('Categoria.id'=>'11'),'recursive'=>'-1' ));}
+
+				$data['Tnoticia']['codigo'] = $this->geracodigo( $codigo['Categoria']['codigo'] );
+				$data['Tnoticia']['chamada'] = $data['Tnoticia']['chamada'] == '<p>.</p>' ? '' : $data['Tnoticia']['chamada'];
+				$data['Tnoticia']['resumo'] = !empty($data['Tnoticia']['chamada']) ? $data['Tnoticia']['chamada'] : '';
+				$data['Tnoticia']['status'] = $data['Tnoticia']['ativado'];
+
+				$data['Tnoticia']['conteudo'] = str_replace('src="http://centraldenoticias.com.br/files/filesfckeditor/',addslashes('src="http://temoscasa.com.br/filesfckeditor/'),$data['Tnoticia']['conteudo']);
+
+				if(!empty( $data['Tnoticia']['data'] )) $data['Tnoticia']['created'] = $data['Tnoticia']['data'];
+
+				if(!empty( $data['Tnoticia']['salao'] )) $data['Subscriber'][][]  = 7;
+				if(!empty( $data['Tnoticia']['metodo'] )) $data['Subscriber'][][] = 6;
+				if(!empty( $data['Tnoticia']['aipdes'] )) $data['Subscriber'][][] = 5;
+
+				if( empty( $data['Tnoticia']['salao']) && empty( $data['Tnoticia']['metodo']) && empty( $data['Tnoticia']['aipdes'] )){
+					$data['Subscriber'][][] = 0;
+				}
+				
+				switch ($data['Tnoticia']['user_id']) {
+					case 0 : $data['Tnoticia']['user_id']   = 9;break;
+					case 1 : $data['Tnoticia']['user_id']   = 2;break;
+					case 38 : $data['Tnoticia']['user_id']  = 3;break;
+					case 132 : $data['Tnoticia']['user_id'] = 4;break;
+					case 133 : $data['Tnoticia']['user_id'] = 5;break;
+					case 134 : $data['Tnoticia']['user_id'] = 6;break;
+					case 135 : $data['Tnoticia']['user_id'] = 2;break;
+					case 137 : $data['Tnoticia']['user_id'] = 7;break;
+					case 138 : $data['Tnoticia']['user_id'] = 8;break;
+					
+					default: $data['Tnoticia']['user_id']   = 2;break;
+				}
+
+				$data['Noticia'] = $data['Tnoticia'];
+				// $data['Tnoticia']['user_id'] = !empty($data['Tnoticia']['user_id']) ? $data['Tnoticia']['user_id'] : 2;
+
+				$this->Noticia->create();
+				if($this->Noticia->save($data)){
+					// Salvou a imagem, tenta copiar a imagem para o diretório final
+					/*$logfile = new File(str_replace('/', DS, WWW_ROOT.'files/log.txt'));
+					if(!$logfile->exists()){
+			            $logfile->create();
+			        }*/
+			        $logfile->append( $noticia['Tnoticia']['id'].';' );
+
+					if(!empty($noticia['Tnoticia']['imagem'])){
+						$from = str_replace('/', DS, $baseDir.$noticia['Tnoticia']['imagem']);
+						$to   = str_replace('/', DS, WWW_ROOT.'files/image/noticia/'.$data['Noticia']['codigo'].'/');
+						
+						$file = new File($from);
+						if($file->exists()){
+							$folder = new Folder($to,true,0755);
+							$file->copy($to.$noticia['Tnoticia']['imagem'],true);
+						}else echo $from.' Não existe.<br />';
+					}
+				}
+			endif;
+
+			// exit;
+		}
+
+
+
+		
+		
+
+		// $filename = array('imovel_1hh6oojs.jpg');
+
+		
+
+	}
 
 /**
  * index method

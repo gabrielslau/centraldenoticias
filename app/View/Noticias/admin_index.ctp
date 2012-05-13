@@ -54,7 +54,7 @@
 					                    'cachePath' => 'files/cache',
 					                    'newWidth' => $x,
 					                    'newHeight' => $y,
-					                    'resizeOption' => 'portrait'
+					                    'resizeOption' => 'crop'
 				                    )
 				                );
 							}else{
@@ -63,7 +63,7 @@
 					                    'cachePath' => 'files/cache',
 					                    'newWidth' => $x,
 					                    'newHeight' => $y,
-					                    'resizeOption' => 'portrait'
+					                    'resizeOption' => 'crop'
 					                )
 					            );	
 							}
