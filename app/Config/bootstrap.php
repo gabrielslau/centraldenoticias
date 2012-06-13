@@ -111,6 +111,9 @@ function isEmpty($element){
 	return !empty($element) ? $element : '';
 }
 
+function getFullBaseUrl(){
+	return (FULL_BASE_URL == 'http://127.0.0.1') ? FULL_BASE_URL.'/centraldenoticias/' : FULL_BASE_URL.'/';
+}
 
 /**
  * Custom Inflector rules, can be set to correctly pluralize or singularize table, model, controller names or whatever other

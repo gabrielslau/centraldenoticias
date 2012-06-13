@@ -27,7 +27,7 @@ class NoticiasController extends AppController {
         $this->Auth->allow('tempUploadCapa','copy');
     }
 
-    function copy(){
+    /*function copy(){
 		$this->autoRender = false;
 		App::uses('File', 'Utility');
 		App::uses('Folder', 'Utility');
@@ -115,11 +115,6 @@ class NoticiasController extends AppController {
 
 				$this->Noticia->create();
 				if($this->Noticia->save($data)){
-					// Salvou a imagem, tenta copiar a imagem para o diretório final
-					/*$logfile = new File(str_replace('/', DS, WWW_ROOT.'files/log.txt'));
-					if(!$logfile->exists()){
-			            $logfile->create();
-			        }*/
 			        $logfile->append( $noticia['Tnoticia']['id'].';' );
 
 					if(!empty($noticia['Tnoticia']['imagem'])){
@@ -136,18 +131,13 @@ class NoticiasController extends AppController {
 			endif;
 
 			// exit;
-		}
-
-
-
-		
-		
+		}		
 
 		// $filename = array('imovel_1hh6oojs.jpg');
 
 		
 
-	}
+	}*/
 
 /**
  * index method

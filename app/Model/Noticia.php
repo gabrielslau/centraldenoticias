@@ -27,7 +27,7 @@ class Noticia extends AppModel {
 		if (!empty($this->data)){
 			$this->data['Noticia'] = array_to_utf8($this->data['Noticia'],true);
 
-			$this->data['Noticia']['titulo'] = ucfirst( strtolower($this->data['Noticia']['titulo']) ); // Capitalize
+			// $this->data['Noticia']['titulo'] = ucfirst( strtolower($this->data['Noticia']['titulo']) ); // Capitalize
 		}
 
 		return true;
